@@ -9,7 +9,12 @@ namespace JsonDataDictionary
     {
         static void Main(string[] args)
         {
-            string basePath = @"C:\Users\ertan\source\repos\JsonDataDictionary\resources";
+            // Proje kök dizinini bulmak için, iki üst dizine çıkıyoruz
+            string projectRootPath = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName;
+
+            // resources klasörünün yolunu oluşturuyoruz
+            string basePath = Path.Combine(projectRootPath, "resources");
+
 
             // Klasör altındaki tüm .ts dosyalarını bul
             var tsFiles = Directory.GetFiles(basePath, "*.ts", SearchOption.AllDirectories);
